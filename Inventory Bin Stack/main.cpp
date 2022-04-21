@@ -3,6 +3,7 @@
 using namespace std;
 
 bool reRun(); // function prototype for reRun function
+int mainMenu();
 void pushItem(DynamicStack &);
 void popItem(DynamicStack& stack);
 
@@ -12,18 +13,8 @@ int main() {
 
 	bool programOn = true;
 	do {
-		int choice = -1;
-		cout << "This program allows you to add a parts serial\n";
-		cout << " number and the date that it was made.\n";
-		cout << "The program also allows you to remove those parts\n";
-		cout << " as well deleting the first one in the line of the list\n\n\n";
-		cout << "------ Inventory Menu --------\n\n";
-		cout << "1.    Enter a part into the inventory.\n";
-		cout << "2.    Take a part from the inventory.\n";
-		cout << "3.    View last item entered.\n";
-		cout << "4.    Quit.\n\n\n";
-		cout << "Please make a choice: ";
-		cin >> choice;
+
+		int choice = mainMenu();
 
 		switch (choice) {
 			case 1 :
@@ -45,6 +36,30 @@ int main() {
 	} while (programOn == true);
 	return 0;
 }
+
+int mainMenu() {
+	int choice = -1;
+	do {
+		
+		cout << "This program allows you to add a parts serial\n";
+		cout << " number and the date that it was made.\n";
+		cout << "The program also allows you to remove those parts\n";
+		cout << " as well deleting the first one in the line of the list\n\n\n";
+		cout << "------ Inventory Menu --------\n\n";
+		cout << "1.    Enter a part into the inventory.\n";
+		cout << "2.    Take a part from the inventory.\n";
+		cout << "3.    View last item entered.\n";
+		cout << "4.    Quit.\n\n\n";
+		cout << "Please make a choice: ";
+		cin >> choice;
+		if (choice < 0 || choice > 4) {
+			cout << "Invalid Choice";
+		}
+	} while (choice < 0 || choice > 4);
+
+	return choice;
+}
+
 
 bool reRun()
 {
